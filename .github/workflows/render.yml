@@ -20,9 +20,11 @@ jobs:
           unzip -q bundle.zip -d work
       - name: system packages
         working-directory: work
+        timeout-minutes: 15
         run: bash setup_linux.sh
       - name: render
         working-directory: work
+        timeout-minutes: 120
         run: python3 render_remote.py
       - uses: actions/upload-artifact@v4
         if: always()
